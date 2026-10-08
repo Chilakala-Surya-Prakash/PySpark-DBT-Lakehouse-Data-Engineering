@@ -5,7 +5,7 @@
 [![dbt Core](https://img.shields.io/badge/dbt-Core%201.12-FF694B?logo=dbt)](https://www.getdbt.com/)
 [![Delta Lake](https://img.shields.io/badge/Delta%20Lake-3.0-blue)](https://delta.io/)
 
-This repository contains a **production-grade Data Engineering project** built using **PySpark**, **dbt Core**, and **Databricks**, based on the tutorial by **Ansh Lamba**. The platform models an end-to-end **Urban Mobility & Ride Analytics** architecture processing transactional data across 6 relational domain entities (`trips`, `customers`, `drivers`, `payments`, `vehicles`, `locations`).
+This repository contains a **production-grade Data Engineering project** built using **PySpark**, **dbt Core**, and **Databricks**. The platform models an end-to-end **Urban Mobility & Ride Analytics** architecture processing transactional data across 6 relational domain entities (`trips`, `customers`, `drivers`, `payments`, `vehicles`, `locations`).
 
 ---
 
@@ -152,7 +152,3 @@ When explaining this project to interviewers, highlight:
 - **dbt Modeling**: *"I structured dbt models using a modular approach: Staging views ➔ Star Schema Dimensions & Fact tables ➔ Business Aggregation Marts."*
 - **SCD Type 2**: *"I implemented dbt snapshots using timestamp strategy to maintain complete historical track records of driver ratings and customer profiles over time."*
 - **Data Governance**: *"I wrote automated dbt data quality tests ensuring zero null primary keys, unique constraints, and foreign key referential integrity."*
-
----
-
-**Original Tutorial Reference**: [Ansh Lamba - PYSPARK X DBT End-To-End Data Engineering Project](https://youtu.be/cq7Uv7ctGjw)
