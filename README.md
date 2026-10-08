@@ -2,10 +2,10 @@
 
 [![Databricks](https://img.shields.io/badge/Databricks-Lakehouse-red?logo=databricks)](https://databricks.com/)
 [![PySpark](https://img.shields.io/badge/PySpark-3.x-orange?logo=apachespark)](https://spark.apache.org/)
-[![dbt Core](https://img.shields.io/badge/dbt-Core%201.12-FF694B?logo=dbt)](https://www.getdbt.com/)
+[![dbt Cloud](https://img.shields.io/badge/dbt-Cloud-FF694B?logo=dbt)](https://www.getdbt.com/)
 [![Delta Lake](https://img.shields.io/badge/Delta%20Lake-3.0-blue)](https://delta.io/)
 
-This repository contains a **production-grade Data Engineering project** built using **PySpark**, **dbt Core**, and **Databricks**. The platform models an end-to-end **Urban Mobility & Ride Analytics** architecture processing transactional data across 6 relational domain entities (`trips`, `customers`, `drivers`, `payments`, `vehicles`, `locations`).
+This repository contains a **production-grade Data Engineering project** built using **PySpark**, **dbt Cloud**, and **Databricks**. The platform models an end-to-end **Urban Mobility & Ride Analytics** architecture processing transactional data across 6 relational domain entities (`trips`, `customers`, `drivers`, `payments`, `vehicles`, `locations`).
 
 ---
 
@@ -63,7 +63,7 @@ flowchart LR
    - String normalization (trimming, lowercasing email formats, phone number digits extraction).
    - Primary key deduplication and null handling.
    - Derived column engineering (trip duration in minutes, cost per km).
-3. **dbt Core Data Modeling**:
+3. **dbt Cloud Data Modeling**:
    - **Staging Layer**: Clean, 1:1 view mappings over Silver tables.
    - **Dimensional Marts**: Star Schema dimension tables (`dim_customers`, `dim_drivers`, `dim_vehicles`, `dim_locations`).
    - **Fact Tables**: Transactional fact tables (`fct_trips`, `fct_payments`) for revenue and ride duration analysis.
@@ -92,9 +92,9 @@ PySpark_DBT_Project/
 │   ├── 01_bronze_ingestion.py          # CSV -> Delta Bronze Ingestion
 │   ├── 02_silver_cleansing.py          # Bronze -> Silver Cleansing & Enrichment
 │   └── 03_gold_aggregations.py         # Silver -> Gold Aggregations & KPIs
-├── dbt_project/                        # dbt Core Data Modeling Project
+├── dbt_project/                        # dbt Cloud Data Modeling Project
 │   ├── dbt_project.yml                 # dbt Project configuration
-│   ├── profiles.yml.example            # Sample profiles for Databricks / Spark / DuckDB
+│   ├── profiles.yml.example            # Sample profiles for Databricks / Spark
 │   ├── models/
 │   │   ├── staging/                    # Staging views (stg_customers, stg_drivers, etc.)
 │   │   │   └── schema.yml              # Staging data quality assertions
@@ -127,14 +127,11 @@ python3 -m pyspark_pipeline.02_silver_cleansing
 python3 -m pyspark_pipeline.03_gold_aggregations
 ```
 
-### 2. dbt Core Transformation & Testing
-Navigate to the `dbt_project` folder and execute dbt:
-```bash
-cd dbt_project
-dbt run
-dbt test
-dbt snapshot
-```
+### 2. dbt Cloud Transformation & Testing
+Connect your GitHub repository directly to **dbt Cloud**, configure the Databricks connection, and execute:
+- Build Models: `dbt run`
+- Data Quality Assertions: `dbt test`
+- SCD Type 2 Snapshots: `dbt snapshot`
 
 ### 3. Unified Orchestrator Script
 Run the entire end-to-end pipeline and print executive summary reports:
