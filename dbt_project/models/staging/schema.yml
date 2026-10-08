@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned staging view of raw customer records."
+    columns:
+      - name: customer_id
+        description: "Primary key for customers"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "Customer email address"
+        tests:
+          - not_null
+
+  - name: stg_drivers
+    description: "Cleaned staging view of driver records."
+    columns:
+      - name: driver_id
+        description: "Primary key for drivers"
+        tests:
+          - unique
+          - not_null
+      - name: driver_rating
+        description: "Rating out of 5"
+
+  - name: stg_trips
+    description: "Cleaned staging view of ride trips."
+    columns:
+      - name: trip_id
+        description: "Primary key for trips"
+        tests:
+          - unique
+          - not_null
+      - name: driver_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_drivers')
+              field: driver_id
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+
+  - name: stg_vehicles
+    description: "Staging view of ride vehicles."
+    columns:
+      - name: vehicle_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_payments
+    description: "Staging view of trip payments."
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null

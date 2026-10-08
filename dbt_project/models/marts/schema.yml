@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension table enriched with lifetime spend and trip counts."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_drivers
+    description: "Driver dimension table with vehicle assignments and lifetime performance."
+    columns:
+      - name: driver_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_trips
+    description: "Fact table for all ride-sharing trips."
+    columns:
+      - name: trip_id
+        tests:
+          - unique
+          - not_null
+      - name: fare_amount
+        tests:
+          - not_null
+
+  - name: monthly_driver_performance
+    description: "Monthly aggregation of driver revenue and trip completion metrics."
+    columns:
+      - name: driver_id
+        tests:
+          - not_null
