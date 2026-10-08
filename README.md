@@ -112,7 +112,7 @@ PySpark_DBT_Project/
 │       ├── dim_drivers_snapshot.sql
 │       └── dim_customers_snapshot.sql
 ├── run_pipeline.py                     # Pipeline Orchestrator & Runner
-└── README.md                           # Documentation & Interview Talking Points Guide
+└── README.md                           # Documentation
 ```
 
 ---
@@ -141,14 +141,3 @@ Run the entire end-to-end pipeline and print executive summary reports:
 ```bash
 python3 run_pipeline.py
 ```
-
----
-
-## 💡 Interview Talking Points Guide
-
-When explaining this project to interviewers, highlight:
-- **Architecture**: *"I built an end-to-end Medallion Data Lakehouse platform processing ride-sharing data using PySpark for raw ingestion and dbt for dimensional modeling."*
-- **Data Engineering Practices**: *"I enforced explicit schemas on read, added ingestion lineage metadata, cleansed messy phone/email records, and deduplicated primary keys before writing clean Parquet/Delta tables."*
-- **dbt Modeling**: *"I structured dbt models using a modular approach: Staging views ➔ Star Schema Dimensions & Fact tables ➔ Business Aggregation Marts."*
-- **SCD Type 2**: *"I implemented dbt snapshots using timestamp strategy to maintain complete historical track records of driver ratings and customer profiles over time."*
-- **Data Governance**: *"I wrote automated dbt data quality tests ensuring zero null primary keys, unique constraints, and foreign key referential integrity."*
