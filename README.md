@@ -114,27 +114,3 @@ PySpark_DBT_Project/
 ├── run_pipeline.py                     # Pipeline Orchestrator & Runner
 └── README.md                           # Documentation
 ```
-
----
-
-## 🚀 How to Run the Pipeline
-
-### 1. PySpark Medallion Pipeline Execution
-Run the PySpark ingestion and transformation steps:
-```bash
-python3 -m pyspark_pipeline.01_bronze_ingestion
-python3 -m pyspark_pipeline.02_silver_cleansing
-python3 -m pyspark_pipeline.03_gold_aggregations
-```
-
-### 2. dbt Cloud Transformation & Testing
-Connect your GitHub repository directly to **dbt Cloud**, configure the Databricks connection, and execute:
-- Build Models: `dbt run`
-- Data Quality Assertions: `dbt test`
-- SCD Type 2 Snapshots: `dbt snapshot`
-
-### 3. Unified Orchestrator Script
-Run the entire end-to-end pipeline and print executive summary reports:
-```bash
-python3 run_pipeline.py
-```
